@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  jasperreports:
+    image: bitnami/jasperreports:latest
+    ports:
+      - '8080:8080'
+      - '8443:8443'
+    volumes:
+      - 'jasperreports_data:/bitnami/jasperreports'
+      # The line below allows you to provide your own JasperReports configuration files, to be copied to WEB-INF
+      # - "./config:/bitnami/jasperreports-mounted-conf"
+    depends_on:
+      - mysql
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - JASPERREPORTS_DATABASE_HOST=mysql
+      - JASPERREPORTS_DATABASE_PORT_NUMBER=3306
+      - JASPERREPORTS_DATABASE_NAME=bitnami_jasperreports
+      - JASPERREPORTS_DATABASE_USER=root
+      - JASPERREPORTS_DATABASE_PASSWORD=root_password
+    networks:
+      - jasper_network
+
+  mysql:
+    image: bitnami/mysql:latest
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mysql_data:/bitnami/mysql'
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root_password  # Change this to your actual root password
+      - MYSQL_DATABASE=bitnami_jasperreports
+      - MYSQL_USER=bn_jasperreports
+      - MYSQL_PASSWORD=my_password
+    networks:
+      - jasper_network
+    expose:
+    - '3306'
+    
+volumes:
+  jasperreports_data:
+    driver: local
+  mysql_data:
+    driver: local
+
+
+networks:
+  jasper_network:
+    driver: bridge
