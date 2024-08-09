@@ -1,5 +1,9 @@
-FROM bitnami/jasperreports:latest
+FROM tomcat:11.0.0
 
-WORKDIR /app
+WORKDIR /usr/local/tomcat/webapps
 
-RUN docker run \ -e ALLOW_EMPTY_PASSWORD=yes \ -v /path/to/mysql-persistence:/bitnami/mysql/data \ bitnami/mysql:latest
+COPY jasper-bin /usr/local/tomcat/webapps/jasper-bin
+
+EXPOSE 8080
+
+CMD ["catalina.sh","run"]
