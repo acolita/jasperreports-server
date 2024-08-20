@@ -20,7 +20,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
-        run: docker build -t JasperReports_DockerImage .
+        run: docker build -t jasper-dockerfile .
 
       - name: Push Docker image to GitHub Packages
         run: |
