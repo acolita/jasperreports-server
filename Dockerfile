@@ -11,10 +11,11 @@ RUN wget "https://sourceforge.net/projects/jr-community-installers/files/Server/
 
 VOLUME /root/
 
-ADD wait-for-it.sh /wait-for-it.sh
+ADD Scripts/wait-for-it.sh /wait-for-it.sh
 
-ADD entrypoint.sh /entrypoint.sh
-ADD .do_deploy_jasperserver /.do_deploy_jasperserver
+ADD Scripts/entrypoint.sh /entrypoint.sh
+
+ADD Utils/.do_deploy_jasperserver /.do_deploy_jasperserver
     
 RUN chmod a+x /entrypoint.sh && \
     chmod a+x /wait-for-it.sh
