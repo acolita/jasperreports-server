@@ -22,7 +22,12 @@ Após isso adicione o trecho seguinte ao comando docker run (explicado abaixo) d
 
 ## Iniciando Container
 Para iniciar o Container é necessário rodar o comando docker run da seguinte forma:
-> docker run -d   --name {CONTAINER_NAME}  -p 8080:8080 -e DB_TYPE={DB_TYPE} -e CATALINA_HOME=/usr/local/tomcat -e DB_NAME={DB_NAME} -e DB_HOST={DB_HOST} -e DB_PORT={DB_PORT} -e DB_USER={DB_USER} -e DB_PASSWORD={DB_PASSWORD} -e WEBAPP_NAME={WEBAPP_NAME} -v /var/lib/docker/volumes/jasperserver-keystore/_data:/root {IMAGE_TITLE}
+> docker run -d   --name {CONTAINER_NAME}  -p 8080:8080 \
+> -e DB_TYPE={DB_TYPE} -e CATALINA_HOME=/usr/local/tomcat \
+> -e DB_NAME={DB_NAME} -e DB_HOST={DB_HOST} -e DB_PORT={DB_PORT}\
+>  -e DB_USER={DB_USER} -e DB_PASSWORD={DB_PASSWORD} \
+> -e WEBAPP_NAME={WEBAPP_NAME} \
+> -v /var/lib/docker/volumes/jasperserver-keystore/_data:/root {IMAGE_TITLE}
 
 Cada ENV utilizada no comando é necessária para a configuração correta do JasperReports server. Para entender melhor seu contexto, verificar entrypoint.sh e default_master.properties (obtido a partir do pacote TIB_js-jrs-cp{VERSION}_bin.zip .
 
