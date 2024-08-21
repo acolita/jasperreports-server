@@ -28,13 +28,6 @@ jobs:
           IMAGE_VERSION=v0.1.1
           docker build -t jasper_image:$IMAGE_VERSION .
 
-      - name: Push Docker image to GitHub Packages
-        run: |
-          IMAGE_VERSION=v0.1.1
-          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/jasperreports-server-docker-container:$IMAGE_VERSION
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker push ghcr.io/acolita/jasperreports-server-docker-container:$IMAGE_VERSION
-
       - name: Push Docker image with 'latest' tag
         run: |
           IMAGE_VERSION=v0.1.1
