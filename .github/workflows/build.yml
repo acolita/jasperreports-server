@@ -38,5 +38,5 @@ jobs:
       - name: Push Docker image with 'latest' tag
         run: |
           IMAGE_VERSION=v0.1.${{ env.COMMIT_COUNT }}
-          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/jasperReports-server-docker-container:latest
+          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/jasperreports-server-docker-container:latest
           docker push ghcr.io/acolita/jasperreports-server-docker-container:latest
