@@ -31,12 +31,12 @@ jobs:
       - name: Push Docker image to GitHub Packages
         run: |
           IMAGE_VERSION=v0.1.${{ env.COMMIT_COUNT }}
-          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/JasperReports-Server-Docker-Container:$IMAGE_VERSION
+          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/jasperreports-server-docker-container:$IMAGE_VERSION
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker push ghcr.io/acolita/JasperReports-Server-Docker-Container:$IMAGE_VERSION
+          docker push ghcr.io/acolita/jasperreports-server-docker-container:$IMAGE_VERSION
 
       - name: Push Docker image with 'latest' tag
         run: |
           IMAGE_VERSION=v0.1.${{ env.COMMIT_COUNT }}
-          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/JasperReports-Server-Docker-Container:latest
-          docker push ghcr.io/acolita/JasperReports-Server-Docker-Container:latest
+          docker tag jasper_image:$IMAGE_VERSION ghcr.io/acolita/jasperReports-server-docker-container:latest
+          docker push ghcr.io/acolita/jasperreports-server-docker-container:latest
