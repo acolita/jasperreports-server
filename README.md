@@ -38,7 +38,7 @@ To start the Container, run the docker run command as follows:
 > -e WEBAPP_NAME={WEBAPP_NAME} \
 > -v /var/lib/docker/volumes/jasperserver-keystore/_data:/root {IMAGE_TITLE}
 
-Each ENV variable used in the command is necessary for the proper configuration of the JasperReports Server. For more context, refer to entrypoint.sh and default_master.properties (obtained from the TIB_js-jrs-cp{VERSION}_bin.zip package).
+Each ENV variable used in the command is necessary for the proper configuration of the JasperReports Server. For more context, refer to [entrypoint.sh](Scripts/entrypoint.sh) and default_master.properties (obtained from the TIB_js-jrs-cp{VERSION}_bin.zip package).
 
 ## JasperReports Web Login
 1 - Access the URL: http://${dockerHost}:8080/jasperserver
