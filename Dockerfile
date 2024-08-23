@@ -2,7 +2,7 @@ FROM tomcat:9.0.65-jdk11-openjdk
 
 ENV JASPERSERVER_VERSION 8.2.0
 
-ENV CATALINA_OPTS="-Xms32m -Xmx64m"
+ENV CATALINA_OPTS="-Xms1024m -Xmx1536m"
 
 RUN wget "https://sourceforge.net/projects/jr-community-installers/files/Server/TIB_js-jrs-cp_${JASPERSERVER_VERSION}_bin.zip/download" \
          -O /tmp/jasperserver.zip  && \
